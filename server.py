@@ -3,6 +3,8 @@
 from random import choice
 from twitter import get_tweets
 
+#TODO::::: Clean up the tweet text to remove any links
+
 def create_tweet_string(tweets):
     """Converts list of tweets to a single string"""
     
