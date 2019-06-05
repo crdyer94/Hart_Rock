@@ -3,13 +3,15 @@
 from random import choice
 from twitter import get_tweets
 
-def create_tweet_string():
+def create_tweet_string(tweets):
     """Converts list of tweets to a single string"""
     
     tweet_string = ''.join(tweets)
 
+    return tweet_string
 
-def make_chains(text_string):
+
+def make_chains(tweet_string):
     """Take input text as string; return dictionary of Markov chains.
     A chain will be a key that consists of a tuple of (word1, word2)
     and the value would be a list of the word(s) that follow those two
@@ -18,9 +20,7 @@ def make_chains(text_string):
     
     chains = {}
 
-    words_list = text_string.split()
-    words_list.append(None)
-
+    words_list = tweet_string.split()
 
     for word in range(0,len(words_list)-2):
         bi_word = (words_list[word], words_list[word+1])
@@ -32,15 +32,8 @@ def make_chains(text_string):
 def make_text(chains):
     """Return text from chains."""
 
-    # randomly pick a bi_word
-    # randomly pick a value that applies to the chosen bi_word
-    # search for the bi_word that had the second value of the first chosen bi_and the value
-    # keep repeating lines 1 and 2 until we hit None
-
     words = []
 
-
-    # your code goes here
     beginning_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
     sentence_end = ".!?"
 
