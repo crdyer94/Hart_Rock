@@ -29,7 +29,7 @@ def get_tweets(name1, name2):
                                             trim_user="true",
                                             include_rts="false",
                                             exclude_replies="true",
-                                            count=10)
+                                            count=100)
         for twitter_object in twitter_objects:
 
             tweet_object = twitter_object._json

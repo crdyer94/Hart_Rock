@@ -8,7 +8,7 @@ from twitter import get_tweets
 def create_tweet_string(tweets):
     """Converts list of tweets to a single string"""
     
-    tweet_string = ''.join(tweets)
+    tweet_string = ' '.join(tweets)
 
     return tweet_string
 
@@ -23,6 +23,12 @@ def make_chains(tweet_string):
     chains = {}
 
     words_list = tweet_string.split()
+    
+    for word in words_list:
+        if 'https' in word or '&' in word:
+            words_list.remove(word)
+
+
 
     for word in range(0,len(words_list)-2):
         bi_word = (words_list[word], words_list[word+1])
@@ -37,7 +43,7 @@ def make_text(chains):
     words = []
 
     beginning_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    sentence_end = ".!?"
+    sentence_end = ".!?;!!!!!"
 
 
     base_bi_word = choice(list(chains.keys()))
@@ -66,6 +72,7 @@ tweet_string = create_tweet_string(tweets)
 
 # Get a Markov chain
 chains = make_chains(tweet_string)
+
 
 # Produce random text
 random_text = make_text(chains)
